@@ -9,13 +9,15 @@
       }
     }
   ],
+  "buildCommand": "npm ci --no-cache && npm run build ",
   "env": {
     "DATABASE_URL": "mongodb+srv://edilson591:xSfLtrkr6ReNzZAH@books.bozhe.mongodb.net/books?retryWrites=true&w=majority"
   },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/server.js"
+      "dest": "dist/server.js",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
     }
   ]
 }

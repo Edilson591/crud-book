@@ -2,9 +2,12 @@
   "name": "crud-books",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "npx prisma generate && tsc && npx prisma db push",
+    "build": "tsc && npx prisma generate && npx prisma db push",
     "start": "node dist/server.js"
   },
   "keywords": [],
