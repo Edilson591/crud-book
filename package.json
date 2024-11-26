@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "npx prisma generate && tsc && npx prisma migrate deploy",
+    "build": "npx prisma generate && tsc && npx prisma db push",
     "start": "node dist/server.js"
   },
   "keywords": [],
