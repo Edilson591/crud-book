@@ -23,7 +23,7 @@ const start = async () => {
     await app.listen(
       {
         port: process.env.PORT ? Number(process.env.PORT) : 1000,
-        host: "0,0,0,0",
+        host: "0.0.0.0",
       },
       (err, address) => {
         if(err){
