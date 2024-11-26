@@ -1,16 +1,17 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { Books } from "../interface/BooksInterface";
+import { Books, UpdateBookBody } from "../interface/BooksInterface";
 import { UpdateBooksServices } from "../services/UpdateBooksServices";
 
 class UpdateBooksControllers {
   async handle(
-    request: FastifyRequest<{ Params: { id: string }; Body: Books }>,
+    request: FastifyRequest<{ Params: { id: string }; Body: UpdateBookBody }>,
     reply: FastifyReply
   ) {
     const { id } = request.params;
     const { categoria, descricao, disponibilidade, titulo, autor, img } =
-      request.body as Omit<Books, "create_at" | "update_at">;
+      request.body
     const booksServices = new UpdateBooksServices();
+    const updateAt = new Date()
 
     try {
       const books = await booksServices.execute({
@@ -21,6 +22,7 @@ class UpdateBooksControllers {
         disponibilidade,
         titulo,
         img,
+        update_at: updateAt
       });
       return reply.send(books);
     } catch (error) {

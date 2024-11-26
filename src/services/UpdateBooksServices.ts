@@ -1,15 +1,17 @@
 import { Books } from "@prisma/client";
 import prismaClient from "../dataBase";
+import { UpdateBookBody } from "../interface/BooksInterface";
 
 class UpdateBooksServices {
   async execute({
-    id,
     categoria,
     descricao,
     disponibilidade,
     titulo,
-    autor
-  }: Omit<Books,"create_at" | "update_at">) {
+    autor,
+    id,
+    update_at
+  }: UpdateBookBody) {
     const books = await prismaClient.books.update({
       where: {
         id,
@@ -20,6 +22,7 @@ class UpdateBooksServices {
         descricao,
         disponibilidade,
         titulo,
+        update_at
       },
     });
     return books
