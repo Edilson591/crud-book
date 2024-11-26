@@ -11,6 +11,9 @@ export async function routes(fastify: FastifyInstance, optinons: FastifyPluginOp
     fastify.get("/books",async (request: FastifyRequest, reply: FastifyReply) => {
         return new ListBooksControllers().handle(request,reply)
     })
+    fastify.get("/",async (request: FastifyRequest, reply: FastifyReply) => {
+        return reply.code(200).send("tudo ok") 
+    })
     fastify.post("/book",async (request: FastifyRequest, reply: FastifyReply) => {
         return new CreateBookControllers().handle(request,reply)
     })

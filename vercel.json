@@ -1,16 +1,21 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "src/server.js",
-        "use": "@vercel/node"
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["prisma/**"]
       }
-    ],
-    "routes": [
-      {
-        "src": "(.*)",
-        "dest": "src/server.ts"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "mongodb+srv://edilson591:xSfLtrkr6ReNzZAH@books.bozhe.mongodb.net/books?retryWrites=true&w=majority"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/server.js"
+    }
+  ]
+}
