@@ -13,7 +13,6 @@ class DeleteBooksControllers {
     try {
       const books = await booksServices.execute({ id });
       return reply.status(200).send(books);
-    //   reply.status(200).send({ message: "Book deleted successfully." });
     } catch (error) {
       return reply.status(500).send({ error: "Failed to delete book." });
     }

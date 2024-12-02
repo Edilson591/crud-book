@@ -2,6 +2,7 @@ import fastify from "fastify";
 import { routes } from "./routes";
 import fastifyCors from "@fastify/cors";
 
+
 const app = fastify({
   logger: true,
   ignoreTrailingSlash: true,
@@ -13,8 +14,10 @@ const start = async () => {
   app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message });
   });
+
+  
   await app.register(fastifyCors, {
-    origin: true,
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
   });
   await app.register(routes);
