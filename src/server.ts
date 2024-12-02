@@ -15,6 +15,7 @@ const start = async () => {
     reply.code(400).send({ message: error.message });
   });
 
+
   
   await app.register(fastifyCors, {
     origin: "*",
